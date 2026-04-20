@@ -21,7 +21,12 @@ jobs:
           python-version: "3.10"
 
       - name: Install dependencies
-        run: pip install pandas scikit-learn xgboost mlflow fastapi uvicorn python-multipart pytest httpx
+        run: |
+          pip install pandas scikit-learn xgboost mlflow fastapi uvicorn python-multipart pytest httpx pyyaml
+
+      - name: Create required folders
+        run: |
+          mkdir -p data/raw data/processed models reports logs
 
       - name: Generate dataset
         run: python generate_data.py
@@ -30,12 +35,16 @@ jobs:
         run: python src/preprocess.py
 
       - name: Train model
-        run: |
-          export MLFLOW_TRACKING_URI="file:///tmp/mlruns"
-          python src/train.py
+        run: python src/train.py
+        env:
+          MLFLOW_TRACKING_URI: "sqlite:///mlflow.db"
+          OPENBLAS_NUM_THREADS: "1"
+          OMP_NUM_THREADS: "1"
 
       - name: Run tests
         run: pytest tests/ -v
+        env:
+          MLFLOW_TRACKING_URI: "sqlite:///mlflow.db"
 
       - name: Validate model metrics
         run: |
