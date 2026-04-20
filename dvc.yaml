@@ -6,6 +6,8 @@ stages:
       - data/raw/healthcare_stress.csv
     outs:
       - data/processed/features.csv
+      - models/scaler.pkl
+      - models/encoders.pkl
 
   train:
     cmd: python src/train.py
@@ -15,7 +17,6 @@ stages:
       - params.yaml
     outs:
       - models/best_model.pkl
-      - models/scaler.pkl
     params:
       - train
     metrics:

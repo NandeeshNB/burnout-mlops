@@ -1,0 +1,58 @@
+schema: '2.0'
+stages:
+  preprocess:
+    cmd: python src/preprocess.py
+    deps:
+    - path: data/raw/healthcare_stress.csv
+      hash: md5
+      md5: 4a49442b09c68596472d72ed067aaac4
+      size: 19582
+    - path: src/preprocess.py
+      hash: md5
+      md5: aebfc73bdab0e3e670b3ec7421d558e5
+      size: 1272
+    outs:
+    - path: data/processed/features.csv
+      hash: md5
+      md5: f2edd19678974df56b01f86eccfb82b8
+      size: 109618
+    - path: models/encoders.pkl
+      hash: md5
+      md5: 58b6f979065f8f71d678d12f5b1d3c8a
+      size: 384
+    - path: models/scaler.pkl
+      hash: md5
+      md5: 81e3a60ebbbeb44c40eb6cf8e387b203
+      size: 945
+  train:
+    cmd: python src/train.py
+    deps:
+    - path: data/processed/features.csv
+      hash: md5
+      md5: f2edd19678974df56b01f86eccfb82b8
+      size: 109618
+    - path: params.yaml
+      hash: md5
+      md5: 85480c813a8a23b7164468293a4536e0
+      size: 103
+    - path: src/train.py
+      hash: md5
+      md5: ee4f91a327d3f21fdb7dc657e5ed09f1
+      size: 4130
+    params:
+      params.yaml:
+        train:
+          test_size: 0.2
+          random_state: 42
+          n_estimators: 100
+          max_depth: 5
+          learning_rate: 0.1
+    outs:
+    - path: models/best_model.pkl
+      hash: md5
+      md5: ac0d5c75d521b35c5308562f2b045eba
+      size: 2605
+    - path: reports/metrics.json
+      hash: md5
+      md5: 1a8ccba64dc0b1407d6f4af2a17efda1
+      size: 103
