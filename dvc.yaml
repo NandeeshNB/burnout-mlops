@@ -1,0 +1,23 @@
+stages:
+  preprocess:
+    cmd: python src/preprocess.py
+    deps:
+      - src/preprocess.py
+      - data/raw/healthcare_stress.csv
+    outs:
+      - data/processed/features.csv
+
+  train:
+    cmd: python src/train.py
+    deps:
+      - src/train.py
+      - data/processed/features.csv
+      - params.yaml
+    outs:
+      - models/best_model.pkl
+      - models/scaler.pkl
+    params:
+      - train
+    metrics:
+      - reports/metrics.json:
+          cache: false

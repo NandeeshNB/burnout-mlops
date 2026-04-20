@@ -1,0 +1,23 @@
+artifact_path: file:///C:/Users/NANDEESH NB/Desktop/SEM 6/MLOPS/burnout-mlops/mlruns/641219658531122481/models/m-963cbf2aaeee4a6da516192764de058c/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.13.9
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.8.0
+    skops_trusted_types: null
+mlflow_version: 3.11.1
+model_id: m-963cbf2aaeee4a6da516192764de058c
+model_size_bytes: 2571
+model_uuid: m-963cbf2aaeee4a6da516192764de058c
+prompts: null
+run_id: 6245d9fe625b4675af266fa26033687e
+utc_time_created: '2026-04-20 06:41:16.607223'
