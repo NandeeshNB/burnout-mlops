@@ -15,13 +15,20 @@ from sklearn.metrics import (accuracy_score, f1_score,
                               precision_score, recall_score, roc_auc_score)
 
 def train():
-    # Fix MLflow path issue on Windows (spaces in path)
+    # Always define base_dir first
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    mlruns_dir = os.path.join(base_dir, "mlruns")
-    os.makedirs(mlruns_dir, exist_ok=True)
-    tracking_uri = "file:///" + mlruns_dir.replace("\\", "/")
-    mlflow.set_tracking_uri(tracking_uri)
-    print(f"MLflow tracking URI: {tracking_uri}")
+
+    # Use environment variable if set (CI/CD), otherwise use local mlruns
+    tracking_uri = os.environ.get("MLFLOW_TRACKING_URI", None)
+    if tracking_uri:
+        mlflow.set_tracking_uri(tracking_uri)
+        print(f"MLflow tracking URI (from env): {tracking_uri}")
+    else:
+        mlruns_dir = os.path.join(base_dir, "mlruns")
+        os.makedirs(mlruns_dir, exist_ok=True)
+        tracking_uri = "file:///" + mlruns_dir.replace("\\", "/")
+        mlflow.set_tracking_uri(tracking_uri)
+        print(f"MLflow tracking URI (local): {tracking_uri}")
 
     # Load params
     params_path = os.path.join(base_dir, "params.yaml")
@@ -31,6 +38,7 @@ def train():
     # Load data
     data_path = os.path.join(base_dir, "data", "processed", "features.csv")
     df = pd.read_csv(data_path)
+    # ... rest of your code continues unchanged
     X = df.drop("burnout_risk", axis=1)
     y = df["burnout_risk"]
 
