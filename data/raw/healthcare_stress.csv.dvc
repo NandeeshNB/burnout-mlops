@@ -1,0 +1,5 @@
+outs:
+- md5: 4a49442b09c68596472d72ed067aaac4
+  size: 19582
+  hash: md5
+  path: healthcare_stress.csv
