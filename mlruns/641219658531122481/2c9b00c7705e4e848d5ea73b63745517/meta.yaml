@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/NANDEESH NB/Desktop/SEM 6/MLOPS/burnout-mlops/mlruns/641219658531122481/2c9b00c7705e4e848d5ea73b63745517/artifacts
+end_time: 1776667748468
+entry_point_name: ''
+experiment_id: '641219658531122481'
+lifecycle_stage: active
+run_id: 2c9b00c7705e4e848d5ea73b63745517
+run_name: DecisionTree
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1776667745163
+status: 3
+tags: []
+user_id: NANDEESH NB

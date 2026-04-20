@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/NANDEESH NB/Desktop/SEM 6/MLOPS/burnout-mlops/mlruns/641219658531122481/c1b6e7188b39491f80b19e2f62d3e803/artifacts
+end_time: 1776667745157
+entry_point_name: ''
+experiment_id: '641219658531122481'
+lifecycle_stage: active
+run_id: c1b6e7188b39491f80b19e2f62d3e803
+run_name: LogisticRegression
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1776667740893
+status: 3
+tags: []
+user_id: NANDEESH NB

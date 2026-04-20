@@ -1,0 +1,10 @@
+artifact_location: file:///C:/Users/NANDEESH NB/Desktop/SEM 6/MLOPS/burnout-mlops/mlruns/641219658531122481/models/m-c5922828372c4874afc77146198240fd/artifacts
+creation_timestamp: 1776667740954
+experiment_id: '641219658531122481'
+last_updated_timestamp: 1776667745149
+model_id: m-c5922828372c4874afc77146198240fd
+model_type: null
+name: model
+source_run_id: c1b6e7188b39491f80b19e2f62d3e803
+status: 2
+status_message: null
