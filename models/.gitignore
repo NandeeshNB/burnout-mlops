@@ -1,0 +1,5 @@
+# Models are tracked by DVC, not Git
+*.pkl
+*.joblib
+*.h5
+*.pt
